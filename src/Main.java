@@ -1,3 +1,4 @@
+import javax.sound.midi.Soundbank;
 import java.sql.DriverManager;
 import java.util.Scanner;
 import java.sql.SQLException;
@@ -23,10 +24,46 @@ public class Main {
 
         try{
             Connection connection = DriverManager.getConnection(url,username,password);
-
+            while(true){
+                System.out.println("Hotel Management System");
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("1. New Reservation");
+                System.out.println("2. Check Reservation");
+                System.out.println("3. Get Room no");
+                System.out.println("4. Update Reservation");
+                System.out.println("5. Delete Reservation");
+                System.out.println("6. exit");
+                System.out.println("Choose an option");
+                int opt = scanner.nextInt();
+                switch (opt){
+                    case 1:
+                        newReservation(connection, scanner);
+                        break;
+                    case 2:
+                        checkReservation(connection, scanner);
+                        break;
+                    case 3:
+                        getReservation(connection, scanner);
+                        break;
+                    case 4:
+                        updateReservation(connection, scanner);
+                        break;
+                    case 5:
+                        delectRservation(connection, scanner);
+                        break;
+                    case 6:
+                        exit();
+                        break;
+                    default:
+                        System.out.println("enter a valide input");
+                }
+            }
         }catch (SQLException e){
             System.out.println(e.getMessage());
+        } catch (InterruptedException e){
+            throw new RuntimeException(e);
         }
+
 
 
     }
