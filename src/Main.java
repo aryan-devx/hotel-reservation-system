@@ -6,12 +6,13 @@ import java.sql.Statement;
 import java.sql.ResultSet;
 
 
-class HotelReservationSystem{
-    private static String url = "jdbc:mysql://127.0.0.1:3306/hotel_db";
-    private static String username = "root";
-    private static String password = "aryan";
-}
+
 public class Main {
+    // connection constants
+    private static final String url = "jdbc:mysql://127.0.0.1:3306/hotel_db";
+    private static final String username = "root";
+    private static final String password = "aryan";
+
     public static void main(String[] args) {
         try{
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -20,7 +21,12 @@ public class Main {
             System.out.println(e.getMessage());
         }
 
+        try{
+            Connection connection = DriverManager.getConnection(url,username,password);
 
+        }catch (SQLException e){
+            System.out.println(e.getMessage());
+        }
 
 
     }
