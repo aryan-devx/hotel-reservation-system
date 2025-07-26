@@ -5,7 +5,9 @@ import java.sql.SQLException;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.ResultSet;
+import java.lang.Thread;
 
+import static java.lang.System.exit;
 
 
 public class Main {
@@ -52,8 +54,8 @@ public class Main {
                         delectRservation(connection, scanner);
                         break;
                     case 6:
-                        exit();
-                        break;
+                        exitingSystem();
+                        return;
                     default:
                         System.out.println("enter a valide input");
                 }
@@ -63,8 +65,38 @@ public class Main {
         } catch (InterruptedException e){
             throw new RuntimeException(e);
         }
+    }
 
+    private static void exitingSystem() throws InterruptedException {
+        System.out.print("Exiting System");
+        int i=5;
+        while (i!=0){
+            System.out.print(".");
+            Thread.sleep(500);
+            i--;
+        }
+        System.out.println(" ");
+        System.out.println("thanks for using Hotel Reservation System");
+    }
 
+    private static void newReservation(Connection connection, Scanner scanner) {
 
     }
+
+    private static void checkReservation(Connection connection, Scanner scanner) {
+
+    }
+
+    private static void getReservation(Connection connection, Scanner scanner) {
+
+    }
+
+    private static void updateReservation(Connection connection, Scanner scanner) {
+
+    }
+
+    private static void delectRservation(Connection connection, Scanner scanner) {
+
+    }
+
 }
